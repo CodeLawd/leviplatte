@@ -4,7 +4,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        leviplatte: 'hsla(39, 100%, 50%, 1)',
+      },
+    },
   },
   plugins: [],
 }
