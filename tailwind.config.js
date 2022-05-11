@@ -9,6 +9,10 @@ module.exports = {
         leviplatte: 'hsla(39, 100%, 50%, 1)',
       },
     },
+
+    fontFamily: {
+      roboto: ['Roboto', 'sans-serif'],
+    },
   },
   plugins: [],
 }
