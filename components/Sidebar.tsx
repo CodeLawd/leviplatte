@@ -14,7 +14,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="col-span-1 flex flex-col items-center justify-center px-4 md:col-span-2 md:items-start">
+    <div className="col-span-1 flex hidden sm:inline-flex flex-col items-center justify-center px-4 md:col-span-2 md:items-start">
       <div className="my-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold text-leviplatte hover:border-2 hover:border-leviplatte md:ml-4">
         AJ
       </div>

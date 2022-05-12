@@ -11,16 +11,14 @@ const Home: NextPage = () => {
     <>
       <div>
         <Head>
-          <title>LeviPlatte | Home</title>
+          <title>LeviPlatte</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Layout>
-          {/* <main className=""> */}
           {/* FEEDS PAGE */}
           <Feeds />
           {/* SEARCH */}
           <Widgets />
-          {/* </main> */}
         </Layout>
       </div>
     </>

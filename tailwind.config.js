@@ -13,6 +13,14 @@ module.exports = {
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'],
     },
+
+    backgroundImage: {
+      'profile-bg': "url('/profile-banner.jpg')",
+    },
+  },
+
+  screens: {
+    "mobile": '375px',
   },
   plugins: [],
 }
