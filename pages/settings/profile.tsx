@@ -9,6 +9,7 @@ import SettingsMainHeader from '../../components/SettingsMainHeader'
 import UserAccountSettings from '../../components/UserAccountSettings'
 import UserNotification from '../../components/UserNotification'
 import PrivacySettings from '../../components/PrivacySettings'
+import UserDisplaySettings from '../../components/UserDisplaySettings'
 
 const profileSettings = () => {
   const [settings, setSettings] = useState('profile')
@@ -53,13 +54,14 @@ const profileSettings = () => {
           <SettingsHeader onClick={() => setSettings('notification')} text="Notification" />
 
           <SettingsMainHeader text="General" />
-          <SettingsHeader onClick={() => {}} text="Display" />
+          <SettingsHeader onClick={() => setSettings('display')} text="Display" />
         </div>
         <div className="col-span-10 sm:col-span-9 sm:border-l md:col-span-5">
           {settings == 'profile' && <EditUserProfile />}
           {settings == 'account' && <UserAccountSettings />}
           {settings == 'privacy' && <PrivacySettings />}
           {settings == 'notification' && <UserNotification />}
+          {settings == 'display' && <UserDisplaySettings />}
         </div>
       </Layout>
     </>
