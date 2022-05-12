@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../components/Layout'
 import { ArrowLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
@@ -6,8 +6,11 @@ import EditUserProfile from '../../components/EditUserProfile'
 import Head from 'next/head'
 import SettingsHeader from '../../components/SettingsHeader'
 import SettingsMainHeader from '../../components/SettingsMainHeader'
+import UserAccountSettings from '../../components/UserAccountSettings'
 
 const profileSettings = () => {
+  const [settings, setSettings] = useState('profile')
+
   return (
     <>
       <Head>
@@ -33,16 +36,33 @@ const profileSettings = () => {
             </Link>
           </div>
 
-          <SettingsHeader url="/profile" text="Profile" />
-          <SettingsHeader url="/account" text="Account" />
-          <SettingsHeader url="/Account" text="Privacy and Safety" />
-          <SettingsHeader url="/Account" text="Notification" />
+          <SettingsHeader
+            onClick={() => setSettings('profile')}
+            url="/profile"
+            text="Profile"
+          />
+          <SettingsHeader
+            onClick={() => setSettings('account')}
+            url="/account"
+            text="Account"
+          />
+          <SettingsHeader
+            onClick={() => {}}
+            url="/Account"
+            text="Privacy and Safety"
+          />
+          <SettingsHeader
+            onClick={() => {}}
+            url="/Account"
+            text="Notification"
+          />
 
           <SettingsMainHeader text="General" />
-          <SettingsHeader url="/Account" text="Display" />
+          <SettingsHeader onClick={() => {}} url="/Account" text="Display" />
         </div>
         <div className="col-span-5">
-          <EditUserProfile />
+          {settings == 'profile' && <EditUserProfile />}
+          {settings == 'account' && <UserAccountSettings />}
         </div>
       </Layout>
     </>

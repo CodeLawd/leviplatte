@@ -26,11 +26,17 @@ const EditUserProfile = () => {
       </div>
       <div>
         <SettingsMainHeader text="Subscription" />
-        <SettingsHeader url="/Account" text="Subscription price and bundles" />
+        <SettingsHeader
+          onClick={() => {}}
+          text="Subscription price and bundles"
+        />
       </div>
       <div>
         <SettingsMainHeader text="Related Settings" />
-        <SettingsHeader url="/Account" text="Privacy and safety" />
+        <SettingsHeader
+          onClick={() => {}}
+          text="Privacy and safety"
+        />
       </div>
     </div>
   )
