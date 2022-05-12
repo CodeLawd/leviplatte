@@ -7,6 +7,8 @@ import Head from 'next/head'
 import SettingsHeader from '../../components/SettingsHeader'
 import SettingsMainHeader from '../../components/SettingsMainHeader'
 import UserAccountSettings from '../../components/UserAccountSettings'
+import UserNotification from '../../components/UserNotification'
+import PrivacySettings from '../../components/PrivacySettings'
 
 const profileSettings = () => {
   const [settings, setSettings] = useState('profile')
@@ -18,7 +20,7 @@ const profileSettings = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="col-span-3 border-x">
+        <div className="col-span-3 hidden border-x md:block">
           <div className="border-b py-3 px-4">
             {' '}
             <Link href="/profile">
@@ -38,31 +40,26 @@ const profileSettings = () => {
 
           <SettingsHeader
             onClick={() => setSettings('profile')}
-            url="/profile"
             text="Profile"
           />
           <SettingsHeader
             onClick={() => setSettings('account')}
-            url="/account"
             text="Account"
           />
           <SettingsHeader
-            onClick={() => {}}
-            url="/Account"
+            onClick={() => setSettings('privacy')}
             text="Privacy and Safety"
           />
-          <SettingsHeader
-            onClick={() => {}}
-            url="/Account"
-            text="Notification"
-          />
+          <SettingsHeader onClick={() => setSettings('notification')} text="Notification" />
 
           <SettingsMainHeader text="General" />
-          <SettingsHeader onClick={() => {}} url="/Account" text="Display" />
+          <SettingsHeader onClick={() => {}} text="Display" />
         </div>
-        <div className="col-span-5">
+        <div className="col-span-10 sm:col-span-9 sm:border-l md:col-span-5">
           {settings == 'profile' && <EditUserProfile />}
           {settings == 'account' && <UserAccountSettings />}
+          {settings == 'privacy' && <PrivacySettings />}
+          {settings == 'notification' && <UserNotification />}
         </div>
       </Layout>
     </>
