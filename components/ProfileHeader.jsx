@@ -38,12 +38,14 @@ const ProfileHeader = () => {
         </div>
 
         <div className="">
-          <div className="inline-flex cursor-pointer  justify-between rounded-full border border-gray-300 p-3 text-leviplatte hover:border-leviplatte hover:bg-leviplatte hover:text-white sm:px-4">
-            <CogIcon className="h-6 w-6 sm:mr-3" />{' '}
-            <span className="hidden font-medium sm:inline-flex">
-              EDIT PROFILE
-            </span>
-          </div>
+          <Link href="/settings/profile">
+            <div className="inline-flex cursor-pointer  justify-between rounded-full border border-gray-300 p-3 text-leviplatte hover:border-leviplatte hover:bg-leviplatte hover:text-white sm:px-4">
+              <CogIcon className="h-6 w-6 sm:mr-3" />{' '}
+              <span className="hidden font-medium sm:inline-flex">
+                EDIT PROFILE
+              </span>
+            </div>
+          </Link>
           <div className="ml-4 inline-flex cursor-pointer rounded-full border border-gray-300 p-3 text-leviplatte hover:border-leviplatte hover:bg-leviplatte hover:text-white">
             {' '}
             <DuplicateIcon className="h-6 w-6" />{' '}
