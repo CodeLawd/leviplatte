@@ -1,34 +1,51 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
+import EditUserProfile from '../../components/EditUserProfile'
+import Head from 'next/head'
+import SettingsHeader from '../../components/SettingsHeader'
+import SettingsMainHeader from '../../components/SettingsMainHeader'
 
 const profileSettings = () => {
   return (
-    <Layout>
-      <div className="col-span-3 border-x">
-        <div className="border-b py-3 px-4">
-          {' '}
-          <ArrowLeftIcon className="mr-4 inline-flex h-8 w-8 cursor-pointer rounded-full p-1 hover:bg-leviplatte hover:text-white" />{' '}
-          <span className="font-medium"> SETTINGS</span>
-        </div>
-        <div className="py-3 px-4 border-b">
-          <Link href="/profile">
-            <span className="font-medium hover:text-leviplatte cursor-pointer">
-            @codelawd </span>
-          </Link>
-        </div>
+    <>
+      <Head>
+        <title>Edit Profile</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <div className="col-span-3 border-x">
+          <div className="border-b py-3 px-4">
+            {' '}
+            <Link href="/profile">
+              <span>
+                <ArrowLeftIcon className="mr-4 inline-flex h-8 w-8 cursor-pointer rounded-full p-1 hover:bg-leviplatte hover:text-white" />{' '}
+              </span>
+            </Link>
+            <span className="font-bold"> SETTINGS</span>
+          </div>
+          <div className="border-b py-3 px-4">
+            <Link href="/profile">
+              <span className="cursor-pointer font-medium hover:text-leviplatte">
+                @codelawd{' '}
+              </span>
+            </Link>
+          </div>
 
-        <div className="py-3 px-4 border-b cursor-pointer hover:text-white hover:bg-leviplatte">
-          <Link href="/profile">
-            <span className="font-medium ">
-            PROFILE</span>
-          </Link>
-          
+          <SettingsHeader url="/profile" text="Profile" />
+          <SettingsHeader url="/account" text="Account" />
+          <SettingsHeader url="/Account" text="Privacy and Safety" />
+          <SettingsHeader url="/Account" text="Notification" />
+
+          <SettingsMainHeader text="General" />
+          <SettingsHeader url="/Account" text="Display" />
         </div>
-      </div>
-      <div className="col-span-5"> Hello</div>
-    </Layout>
+        <div className="col-span-5">
+          <EditUserProfile />
+        </div>
+      </Layout>
+    </>
   )
 }
 
