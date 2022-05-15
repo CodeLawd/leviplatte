@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         leviplatte: 'hsla(39, 100%, 50%, 1)',
+        leviplatteDark: '#e29300',
       },
     },
 
@@ -20,7 +21,8 @@ module.exports = {
   },
 
   screens: {
-    "mobile": '375px',
+    mobile: '375px',
   },
   plugins: [],
+  darkMode: 'class',
 }

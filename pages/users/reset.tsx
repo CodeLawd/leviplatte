@@ -1,0 +1,32 @@
+import React from 'react'
+import Button from '../../components/Button'
+import InputBox from '../../components/InputBox'
+import Link from 'next/link'
+
+const AuthPage = () => {
+  return (
+    <main className="grid h-screen grid-cols-2">
+      <div className="hidden bg-leviplatte sm:inline-flex">
+        <h1>Leviplatte</h1>
+        <h2>Sign up to support your favorite creators</h2>
+      </div>
+      <div className="col-span-2 flex items-center justify-center bg-black p-4 sm:col-span-1">
+        <div className="max-w-xl">
+          <h1 className="font-bold text-white">Restore Access</h1>
+          <small className="mb-10 text-white">
+            If you have an Leviplatte account, you will receive a password reset
+            link to this e-mail.
+          </small>
+          <InputBox placeholder="Email" type="email" color="white" />
+          <Button
+            text="Reset Password"
+            bgColor="leviplatte"
+            textColor="white"
+          />
+        </div>
+      </div>
+    </main>
+  )
+}
+
+export default AuthPage

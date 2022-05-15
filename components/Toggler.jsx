@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
+import { useTheme } from 'next-themes'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Toggler() {
+
+  const { systemTheme, theme, setTheme } = useTheme()
+
   const [enabled, setEnabled] = useState(false)
 
   return (
@@ -13,6 +17,7 @@ export default function Toggler() {
       checked={enabled}
       onChange={setEnabled}
       className="group relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-leviplatte focus:ring-offset-2"
+      onClick={onClick}
     >
       <span className="sr-only">Use setting</span>
       <span

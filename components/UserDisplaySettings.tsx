@@ -1,5 +1,6 @@
 import SettingsHeader from './SettingsHeader'
 import SettingsMainHeader from './SettingsMainHeader'
+import ThemeSwitcher from './ThemeSwitcher'
 import Toggler from './Toggler'
 
 const UserDisplaySettings = () => {
@@ -15,7 +16,7 @@ const UserDisplaySettings = () => {
 
       <div className="flex items-center justify-between border-b p-4">
         <span> Dark mode </span>
-        <Toggler />
+        <ThemeSwitcher />
       </div>
     </div>
   )
