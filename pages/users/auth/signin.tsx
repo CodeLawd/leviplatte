@@ -10,8 +10,8 @@ const AuthPage = () => {
         <h1 className="text-5xl font-bold">Leviplatte</h1>
         <h2 className="text-3xl">Sign up to support your favorite creators</h2>
       </div>
-      <div className="col-span-2 flex items-center justify-center bg-black p-4 sm:col-span-1">
-        <div className="max-w-sm">
+      <div className="col-span-2 bg-black p-4 sm:col-span-1">
+        <div className="mx-auto mt-28 max-w-lg">
           <h1 className="font-bold text-white">Login</h1>
           <InputBox placeholder="Email" type="email" color="white" />
           <InputBox placeholder="Password" type="password" color="white" />

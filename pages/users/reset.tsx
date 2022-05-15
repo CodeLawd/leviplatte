@@ -10,8 +10,8 @@ const AuthPage = () => {
         <h1>Leviplatte</h1>
         <h2>Sign up to support your favorite creators</h2>
       </div>
-      <div className="col-span-2 flex items-center justify-center bg-black p-4 sm:col-span-1">
-        <div className="max-w-xl">
+      <div className="col-span-2 bg-black p-4 sm:col-span-1">
+        <div className="mx-auto mt-28 max-w-lg">
           <h1 className="font-bold text-white">Restore Access</h1>
           <small className="mb-10 text-white">
             If you have an Leviplatte account, you will receive a password reset

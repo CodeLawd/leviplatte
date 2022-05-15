@@ -10,17 +10,21 @@ const AuthPage = () => {
         <h1>Leviplatte</h1>
         <h2>Sign up to support your favorite creators</h2>
       </div>
-      <div className="col-span-2 flex items-center justify-center bg-black p-4 sm:col-span-1">
-        <div className="w-max">
+      <div className="col-span-2 bg-black p-4 sm:col-span-1">
+        <div className="mx-auto mt-28 max-w-lg">
           <h1 className="font-bold text-white">Create your account</h1>
           <InputBox placeholder="Name" type="text" color="white" />
           <InputBox placeholder="Email" type="email" color="white" />
           <InputBox placeholder="Password" type="password" color="white" />
-          <Button text="Create Account" bgColor="leviplatte" textColor="white" />
+          <Button
+            text="Create Account"
+            bgColor="leviplatte"
+            textColor="white"
+          />
 
-          <div className="py-6 text-center text-leviplatte">
+          <div className="flex flex-col items-center justify-between py-6 text-center text-leviplatte sm:flex-row">
             <Link href="/users/reset">
-              <span className="mr-6 cursor-pointer">Forgot Password?</span>
+              <span className="cursor-pointer">Forgot Password?</span>
             </Link>
 
             <Link href="/users/auth/signin">
