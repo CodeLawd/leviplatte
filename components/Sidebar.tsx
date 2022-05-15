@@ -11,6 +11,7 @@ import {
   HomeIcon,
   UserIcon,
 } from '@heroicons/react/outline'
+import ThemeSwitcher from './ThemeSwitcher'
 
 const Sidebar = () => {
   return (
@@ -36,6 +37,7 @@ const Sidebar = () => {
       </Link>
       <SidebarRow Icon={DotsCircleHorizontalIcon} title="More" />
       <SidebarRow Icon={UserIcon} title="Sign In" />
+      {ThemeSwitcher()}
     </div>
   )
 }

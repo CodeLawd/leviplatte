@@ -18,6 +18,13 @@ const AuthPage = () => {
             link to this e-mail.
           </small>
           <InputBox placeholder="Email" type="email" color="white" />
+          {/* <span className="mb-4 text-center text-leviplatte"> */}
+          <Link href="/users/auth/signin">
+            <span className="mb-4 cursor-pointer text-center text-leviplatte">
+              Back to Sign in
+            </span>
+          </Link>
+          {/* </span> */}
           <Button
             text="Reset Password"
             bgColor="leviplatte"
