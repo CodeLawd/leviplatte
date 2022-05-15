@@ -12,7 +12,7 @@ const SettingsHeader = ({ text, onClick = () => {}, small }: Props) => {
   return (
     <div
       onClick={onClick}
-      className="flex cursor-pointer justify-between items-center border-b py-3 px-4 hover:bg-leviplatte hover:text-white"
+      className="flex cursor-pointer justify-between items-center border-b py-3 px-4 dark:hover:text-black dark:hover:bg-white hover:bg-leviplatte hover:text-white"
     >
       <div>
         
