@@ -12,6 +12,7 @@ import {
   UserIcon,
 } from '@heroicons/react/outline'
 import ThemeSwitcher from './ThemeSwitcher'
+import { ToastContainer } from 'react-toastify'
 
 const Sidebar = () => {
   return (
@@ -19,6 +20,8 @@ const Sidebar = () => {
       <div className="my-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold text-leviplatte hover:border-2 hover:border-leviplatte md:ml-4">
         AJ
       </div>
+
+      <ToastContainer />
 
       <Link href="/">
         <span>

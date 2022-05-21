@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 // COMPONENTS
 import Button from '../../../components/Button'
@@ -16,7 +16,13 @@ const AuthPage = () => {
   })
   const { email, password } = formData
   const dispatch = useDispatch()
+  const { loading, error } = useSelector((state) => ({ ...state.auth }))
   const router = useRouter()
+
+  useEffect(() => {
+    console.log(error)
+    error && toast.error(error)
+  }, [error])
 
   // HANDLE INPUT CHAGE
   const handleChange = (e) => {
@@ -41,6 +47,7 @@ const AuthPage = () => {
       <div className="col-span-2 bg-black p-4 sm:col-span-1">
         <div className="mx-auto mt-28 max-w-lg">
           <h1 className="font-bold text-white">Login</h1>
+          <ToastContainer />
           <form onSubmit={handleSubmit}>
             <InputBox
               value={email}
@@ -58,7 +65,12 @@ const AuthPage = () => {
               type="password"
               color="white"
             />
-            <Button text="Login" bgColor="leviplatte" textColor="white" />
+            <Button
+              text={loading ? 'Loggin in...' : 'Login'}
+              bgColor="leviplatte"
+              textColor="white"
+              style={{ backgroundColor: loading && 'gray' }}
+            />
           </form>
 
           <div className="py-6 text-center text-leviplatte">

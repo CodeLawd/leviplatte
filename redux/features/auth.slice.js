@@ -3,14 +3,14 @@ import * as api from '../api'
 
 export const login = createAsyncThunk(
   'auth/login',
-  async ({ formData, router, toast }) => {
+  async ({ formData, router, toast }, { rejectWithValue }) => {
     try {
       const response = await api.signIn(formData)
       toast.success('Login Successfully')
       router.push('/')
       return response.data
     } catch (err) {
-      console.log(err)
+      return rejectWithValue(err.response.data)
     }
   }
 )
@@ -23,7 +23,7 @@ const authSlice = createSlice({
     loading: false,
   },
 
-  reducers: {
+  extraReducers: {
     [login.pending]: (state) => {
       state.loading = true
     },
@@ -34,8 +34,7 @@ const authSlice = createSlice({
     },
     [login.rejected]: (state, action) => {
       state.loading = false
-      console.log(action.payload)
-      state.error = action.payload.message
+      state.error = action.payload[0]
     },
   },
 })
