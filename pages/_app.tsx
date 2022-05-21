@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 
-import { Provider } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 import store from '../redux/store'
 import { ToastContainer } from 'react-toastify'
 

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/ProfileHeader.jsx", "components/Toggler.jsx", "pages/users/auth/signin.jsx", "pages/users/auth/signup.jsx", "components/Feeds.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/ProfileHeader.jsx", "components/Toggler.jsx", "pages/users/auth/signin.jsx", "pages/users/auth/signup.jsx", "components/Feeds.tsx", "pages/index.tsx"],
   "exclude": ["node_modules"]
 }

@@ -37,6 +37,12 @@ const authSlice = createSlice({
     loading: false,
   },
 
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload
+    },
+  },
+
   extraReducers: {
     [login.pending]: (state) => {
       state.loading = true
@@ -64,5 +70,7 @@ const authSlice = createSlice({
     },
   },
 })
+
+export const { setUser } = authSlice.actions
 
 export default authSlice.reducer
