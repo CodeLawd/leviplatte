@@ -1,53 +1,45 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { ToastContainer, toast } from 'react-toastify'
 import Button from '../../../components/Button'
 import InputBox from '../../../components/InputBox'
 import Link from 'next/link'
+import { register } from '../../../redux/features/auth.slice'
 
 const AuthPage = () => {
-  const [error, setError] = useState({ state: false, message: '' })
-  const [loading, setLoading] = useState(false)
-  const [formDetails, setFormDetails] = useState({
-    userName: '',
+  const [formData, setformData] = useState({
+    name: '',
     email: '',
     password: '',
   })
 
-  const handleChange = (e: any) => {
+  const { name, email, password } = formData
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const { error, loading } = useSelector((state) => ({ ...state.auth }))
+
+  const handleChange = (e) => {
     const { name, value } = e.target
-    setFormDetails({ ...formDetails, [name]: value })
+    setformData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (e: any) => {
+  useEffect(() => {
+    console.log(error)
+    error && toast.error(error)
+  }, [error])
+
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
 
-    const { userName, email, password } = formDetails
-
-    if (userName == '' || email == '' || password == '') {
-      setError({ state: true, message: 'Please fill in all fields' })
+    if (name == '' || email == '' || password == '') {
+      return toast.error('Please all fields are required')
     }
 
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    if (email && password) {
+      dispatch(register({ formData, router, toast }))
     }
-
-    axios
-      .post('https://oracleblocksdapp.xyz/api/user/create', formDetails)
-      .then((user) => {
-        setError({ state: false, message: '' })
-        console.log(user)
-      })
-      .catch((err) => {
-        setError({ state: true, message: err.message })
-        setLoading(false)
-      })
   }
-
-  setInterval(() => {
-    setError({ state: false, message: '' })
-  }, 5000)
 
   return (
     <main className="grid h-screen grid-cols-2">
@@ -55,16 +47,19 @@ const AuthPage = () => {
         <h1>Leviplatte</h1>
         <h2>Sign up to support your favorite creators</h2>
       </div>
+
       <div className="col-span-2 bg-black p-4 sm:col-span-1">
         <div className="mx-auto mt-28 max-w-lg">
           <h1 className="font-bold text-white">Create your account</h1>
+          <ToastContainer />
           <form onSubmit={handleSubmit}>
             <InputBox
               onChange={handleChange}
               placeholder="Name"
               type="text"
               color="white"
-              name="userName"
+              name="name"
+              value={name}
             />
             <InputBox
               onChange={handleChange}
@@ -72,6 +67,7 @@ const AuthPage = () => {
               type="email"
               color="white"
               name="email"
+              value={email}
             />
             <InputBox
               onChange={handleChange}
@@ -79,14 +75,10 @@ const AuthPage = () => {
               type="password"
               color="white"
               name="password"
+              value={password}
             />
-            {error.state && (
-              <small className="pb-4 text-center text-white">
-                {error.message}
-              </small>
-            )}
             <Button
-              text={loading ? 'Submitting...' : 'Create Account'}
+              text={loading ? 'Creating Account...' : 'Create Account'}
               bgColor="leviplatte"
               textColor="white"
             />

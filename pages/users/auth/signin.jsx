@@ -33,6 +33,10 @@ const AuthPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    if (email == "" || password == "") {
+      return toast.error('Please all fields are required')
+    }
+
     if (email && password) {
       dispatch(login({ formData, router, toast }))
     }
