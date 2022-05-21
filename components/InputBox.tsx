@@ -31,7 +31,6 @@ const InputBox = ({
         <input
           type={type}
           name={name}
-          id="email"
           className={`block w-full rounded-md border border-gray-300 bg-transparent p-3 text-${color} focus:border-leviplatte focus:ring-leviplatte sm:text-sm`}
           placeholder={placeholder}
           onChange={onChange}
