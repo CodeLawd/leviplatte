@@ -17,6 +17,7 @@ module.exports = {
 
     backgroundImage: {
       'profile-bg': "url('/profile-banner.jpg')",
+      spinner: "url('/spinner.svg')",
     },
   },
 

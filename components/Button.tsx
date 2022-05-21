@@ -2,9 +2,8 @@ import React, { SVGProps } from 'react'
 
 interface Props {
   bgColor: string
-  text: string
+  text: any
   textColor: string
-  //   Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element
 }
 
 const Button = ({ bgColor, textColor, text }: Props) => {
