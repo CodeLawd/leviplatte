@@ -10,9 +10,12 @@ import UserAccountSettings from '../../components/UserAccountSettings'
 import UserNotification from '../../components/UserNotification'
 import PrivacySettings from '../../components/PrivacySettings'
 import UserDisplaySettings from '../../components/UserDisplaySettings'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateSettings } from '../../redux/features/settings.slice'
 
 const profileSettings = () => {
-  const [settings, setSettings] = useState('profile')
+  const dispatch = useDispatch()
+  const { value } = useSelector((state) => ({ ...state.settings }))
 
   return (
     <>
@@ -40,28 +43,34 @@ const profileSettings = () => {
           </div>
 
           <SettingsHeader
-            onClick={() => setSettings('profile')}
+            onClick={() => dispatch(updateSettings('profile'))}
             text="Profile"
           />
           <SettingsHeader
-            onClick={() => setSettings('account')}
+            onClick={() => dispatch(updateSettings('account'))}
             text="Account"
           />
           <SettingsHeader
-            onClick={() => setSettings('privacy')}
+            onClick={() => dispatch(updateSettings('privacy'))}
             text="Privacy and Safety"
           />
-          <SettingsHeader onClick={() => setSettings('notification')} text="Notification" />
+          <SettingsHeader
+            onClick={() => dispatch(updateSettings('notification'))}
+            text="Notification"
+          />
 
           <SettingsMainHeader text="General" />
-          <SettingsHeader onClick={() => setSettings('display')} text="Display" />
+          <SettingsHeader
+            onClick={() => dispatch(updateSettings('display'))}
+            text="Display"
+          />
         </div>
         <div className="col-span-10 sm:col-span-9 sm:border-l md:col-span-5">
-          {settings == 'profile' && <EditUserProfile />}
-          {settings == 'account' && <UserAccountSettings />}
-          {settings == 'privacy' && <PrivacySettings />}
-          {settings == 'notification' && <UserNotification />}
-          {settings == 'display' && <UserDisplaySettings />}
+          {value == 'profile' && <EditUserProfile />}
+          {value == 'account' && <UserAccountSettings />}
+          {value == 'privacy' && <PrivacySettings />}
+          {value == 'notification' && <UserNotification />}
+          {value == 'display' && <UserDisplaySettings />}
         </div>
       </Layout>
     </>

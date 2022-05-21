@@ -10,6 +10,7 @@
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
+    "daisyui": "^2.15.0",
     "next": "latest",
     "next-themes": "^0.2.0",
     "react": "^17.0.2",

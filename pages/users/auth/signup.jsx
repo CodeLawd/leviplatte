@@ -1,10 +1,9 @@
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify'
-import Button from '../../../components/Button'
-import InputBox from '../../../components/InputBox'
-import Link from 'next/link'
+import { Button, InputBox } from '../../../components'
 import { register } from '../../../redux/features/auth.slice'
 
 const AuthPage = () => {
@@ -17,8 +16,8 @@ const AuthPage = () => {
   const { name, email, password } = formData
   const dispatch = useDispatch()
   const router = useRouter()
-  const { error, loading } = useSelector((state) => ({ ...state.auth }))
-
+  const { user, error, loading } = useSelector((state) => ({ ...state.auth }))
+  console.log(user)
   const handleChange = (e) => {
     const { name, value } = e.target
     setformData({ ...formData, [name]: value })

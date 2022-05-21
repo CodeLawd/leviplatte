@@ -1,4 +1,4 @@
-import SettingsMainHeader from './SettingsMainHeader'
+import { SettingsMainHeader } from './index'
 import Toggler from './Toggler'
 
 const PrivacySettings = () => {
@@ -12,7 +12,7 @@ const PrivacySettings = () => {
       <div className="flex items-center justify-between border-b p-4">
         <span> Show activity status </span>
 
-        <Toggler />
+        <input type="checkbox" className="toggle toggle-secondary" />
       </div>
     </div>
   )

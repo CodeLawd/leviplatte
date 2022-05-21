@@ -1,7 +1,9 @@
-import SettingsHeader from './SettingsHeader'
-import SettingsMainHeader from './SettingsMainHeader'
-import ThemeSwitcher from './ThemeSwitcher'
-import Toggler from './Toggler'
+import {
+  SettingsHeader,
+  SettingsMainHeader,
+  ThemeSwitcher,
+  Toggler,
+} from './index'
 
 const UserDisplaySettings = () => {
   return (

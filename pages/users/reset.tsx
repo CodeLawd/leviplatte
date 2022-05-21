@@ -1,7 +1,5 @@
-import React from 'react'
-import Button from '../../components/Button'
-import InputBox from '../../components/InputBox'
 import Link from 'next/link'
+import { Button, InputBox } from '../../components'
 
 const AuthPage = () => {
   return (

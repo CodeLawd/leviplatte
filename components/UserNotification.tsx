@@ -1,6 +1,5 @@
 import React from 'react'
-import SettingsHeader from './SettingsHeader'
-import SettingsMainHeader from './SettingsMainHeader'
+import { SettingsHeader, SettingsMainHeader } from './index'
 
 const UserNotification = () => {
   return (
@@ -11,19 +10,13 @@ const UserNotification = () => {
 
       <SettingsMainHeader text="Preferences" />
       <SettingsHeader onClick={() => {}} text="Push notifications" />
-      <SettingsHeader
-        onClick={() => {}}
-        text="Email notifications"
-      />
+      <SettingsHeader onClick={() => {}} text="Email notifications" />
       <SettingsHeader onClick={() => {}} text="Site notifications" />
       <SettingsHeader onClick={() => {}} text="Toast notifications" />
       <SettingsHeader onClick={() => {}} text="SMS notifications" />
 
       <SettingsMainHeader text="Other" />
-      <SettingsHeader
-        onClick={() => {}}
-        text="Telegram bot"
-      />
+      <SettingsHeader onClick={() => {}} text="Telegram bot" />
     </div>
   )
 }

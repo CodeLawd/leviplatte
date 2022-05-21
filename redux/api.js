@@ -1,7 +1,20 @@
 import axios from 'axios'
 
-export const signIn = (formData) =>
-  axios.post('https://oracleblocksdapp.xyz/api/user/login', formData)
+const API = axios.create({ baseURL: 'https://oracleblocksdapp.xyz/api' })
 
-export const register = (formData) =>
-  axios.post('https://oracleblocksdapp.xyz/api/user/create', formData)
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem('profile')) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem('profile')).token
+    }`
+  }
+
+  return req
+})
+
+export const signIn = (formData) => API.post('/user/login', formData)
+
+export const register = (formData) => API.post('/user/create', formData)
+
+export const editUserProfile = (formData, userId) =>
+  API.patch(`/user/update/${userId}`, formData)

@@ -5,8 +5,7 @@ import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify'
 
 // COMPONENTS
-import Button from '../../../components/Button'
-import InputBox from '../../../components/InputBox'
+import { Button, InputBox } from '../../../components'
 import { login } from '../../../redux/features/auth.slice'
 
 const AuthPage = () => {

@@ -1,5 +1,4 @@
-import ProfileHeader from './ProfileHeader'
-import ProfileMedia from './ProfileMedia';
+import { ProfileHeader, ProfileMedia } from './index'
 
 const PersonalProfile = () => {
   return (

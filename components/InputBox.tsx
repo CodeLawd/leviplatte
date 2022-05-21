@@ -2,11 +2,11 @@ import React, { ChangeEventHandler } from 'react'
 
 interface InputProps {
   label?: string
-  type: string
+  type?: string
   placeholder: string
   color?: string
   onChange?: ChangeEventHandler<HTMLInputElement>
-  name: string
+  name?: string
   value?: string
 }
 

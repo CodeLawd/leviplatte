@@ -1,6 +1,5 @@
 import React from 'react'
-import SettingsHeader from './SettingsHeader'
-import SettingsMainHeader from './SettingsMainHeader'
+import { SettingsHeader, SettingsMainHeader } from './index'
 
 const UserAccountSettings = () => {
   return (

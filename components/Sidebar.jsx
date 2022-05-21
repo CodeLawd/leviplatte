@@ -10,11 +10,33 @@ import {
   MailIcon,
   HomeIcon,
   UserIcon,
+  LoginIcon,
+  LogoutIcon,
 } from '@heroicons/react/outline'
-import ThemeSwitcher from './ThemeSwitcher'
+
+import { ThemeSwitcher, SideDrawer } from './index'
 import { ToastContainer } from 'react-toastify'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLogout } from '../redux/features/auth.slice'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
 const Sidebar = () => {
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => ({ ...state.auth }))
+  const router = useRouter()
+
+  const handleClick = () => {
+    dispatch(setLogout())
+    user.state == null &&
+      toast.success(
+        'Successfully Signed Out. \n You will be redirecetd to the login page within 3 secs'
+      )
+    setInterval(() => {
+      router.push('/users/auth/signin')
+    }, 3000)
+  }
+
   return (
     <div className="col-span-1 hidden flex-col items-start px-4 sm:inline-flex md:col-span-2 md:items-start">
       <div className="my-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold text-leviplatte hover:border-2 hover:border-leviplatte md:ml-4">
@@ -33,13 +55,28 @@ const Sidebar = () => {
       <SidebarRow Icon={BookmarkIcon} title="Bookmark" />
       <SidebarRow Icon={CollectionIcon} title="Lists" />
       <SidebarRow Icon={UserAddIcon} title="Subscriptions" />
+
       <Link href="/profile">
         <span>
           <SidebarRow Icon={UserIcon} title="Profile" />
         </span>
       </Link>
+      {/* <SideDrawer
+        component={}
+      /> */}
       <SidebarRow Icon={DotsCircleHorizontalIcon} title="More" />
-      <SidebarRow Icon={UserIcon} title="Sign In" />
+
+      {user?.token ? (
+        <span onClick={handleClick} className="block">
+          <SidebarRow Icon={LogoutIcon} title="SignOut" />
+        </span>
+      ) : (
+        <Link href="/users/auth/signin">
+          <span>
+            <SidebarRow Icon={LoginIcon} title="SignIn" />
+          </span>
+        </Link>
+      )}
       {ThemeSwitcher()}
     </div>
   )

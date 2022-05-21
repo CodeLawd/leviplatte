@@ -1,6 +1,4 @@
-import InputBox from './InputBox'
-import SettingsHeader from './SettingsHeader'
-import SettingsMainHeader from './SettingsMainHeader'
+import { InputBox, SettingsHeader, SettingsMainHeader } from './index'
 import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
 

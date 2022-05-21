@@ -1,5 +1,5 @@
 import { RefreshIcon } from '@heroicons/react/outline'
-import TweetBox from './TweetBox'
+import { TweetBox } from './index'
 import { useSelector } from 'react-redux'
 
 const Feeds = () => {

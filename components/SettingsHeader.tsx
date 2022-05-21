@@ -1,6 +1,4 @@
 import { ChevronRightIcon } from '@heroicons/react/outline'
-import Link from 'next/link'
-import React, { MouseEventHandler } from 'react'
 
 interface Props {
   text: string
@@ -12,12 +10,11 @@ const SettingsHeader = ({ text, onClick = () => {}, small }: Props) => {
   return (
     <div
       onClick={onClick}
-      className="flex cursor-pointer justify-between items-center border-b py-3 px-4 dark:hover:text-black dark:hover:bg-white hover:bg-leviplatte hover:text-white"
+      className="flex cursor-pointer items-center justify-between border-b py-3 px-4 hover:bg-leviplatte hover:text-white dark:hover:bg-white dark:hover:text-black"
     >
       <div>
-        
-          <span className="font-normal">{text}</span>
-      
+        <span className="font-normal">{text}</span>
+
         <small className="block">{small}</small>
       </div>
       <ChevronRightIcon className="h-6 w-6" />
