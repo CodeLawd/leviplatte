@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import React from 'react'
-import {Layout, PersonalProfile, Widgets} from '../components'
+import React, { useEffect } from 'react'
+import { Layout, PersonalProfile, Widgets } from '../components'
 
 const profile = () => {
+  
   return (
     <>
       <Head>

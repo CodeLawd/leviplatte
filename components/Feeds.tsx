@@ -7,7 +7,7 @@ const Feeds = () => {
 
   console.log(user)
   return (
-    <div className="col-span-10 border-x sm:col-span-9 md:col-span-8 lg:col-span-5">
+    <div className="col-span-10 border-x sm:col-span-9 md:col-span-8 lg:col-span-5 h-screen">
       <div className="flex items-center justify-between pb-4">
         <h1 className="p-5 pb-0 text-xl font-bold">Home</h1>
         <h2></h2>

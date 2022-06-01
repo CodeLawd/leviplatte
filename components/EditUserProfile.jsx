@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { editUserProfile } from '../redux/features/profile.slice'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
+import useFetch from '../hooks/useFetch'
 
 const initialState = {
   username: '',
@@ -17,36 +18,38 @@ const initialState = {
 
 const EditUserProfile = () => {
   const [formDetails, setFormDetails] = useState(initialState)
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormDetails({ ...formDetails, [name]: value })
-  }
   const router = useRouter()
-
   const { userName, displayName, bio, location, url } = formDetails
   const dispatch = useDispatch()
   const { user } = useSelector((state) => ({
     ...state.auth,
   }))
 
+  if (user !== null) {
+    const { loading, error, data } = useFetch(
+      'https://oracleblocksdapp.xyz/api/user',
+      user.token
+    )
+    console.log(data)
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormDetails({ ...formDetails, [name]: value })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // console.log(user)
-
-    if (!user?.token) {
-      toast.error('You need to be logged in to make changes')
-      router.push('/users/auth/signin')
-      return
-    }
-    if (userName || displayName || bio || location || url) {
-      dispatch(editUserProfile({ formDetails, router, toast }))
-    }
+    // if (!user?.token) {
+    //   toast.error('You need to be logged in to make changes')
+    //   router.push('/users/auth/signin')
+    //   return
+    // }
+    // if (userName || displayName || bio || location || url) {
+    //   dispatch(editUserProfile({ formDetails, router, toast }))
+    // }
   }
-
-  // const handleClick =() => {
-  //   console.log("CLICKED")
-  // }
 
   return (
     <div className="max-h-screen border-r">

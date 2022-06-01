@@ -8,10 +8,33 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import StatusModal from './StatusModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 const ProfileHeader = () => {
   const [status, setStatus] = useState(false)
+  const [userObj, setUserObj] = useState(null)
+  const { user } = useSelector((state) => ({ ...state.auth }))
+
+  if (user) {
+    useEffect(() => {
+      // try {}catch{}
+      axios
+        .get('https://oracleblocksdapp.xyz/api/user', {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((data) => {
+          setUserObj(data.data)
+          console.log(data)
+        })
+        .catch((err) => console.log('An error occured'))
+    }, [])
+  }
+
+  console.log(userObj)
   return (
     <div className="border-b border-gray-200">
       <div className="flex h-48 items-start justify-between bg-profile-bg pb-4 text-white">
@@ -21,7 +44,8 @@ const ProfileHeader = () => {
               <ArrowLeftIcon className="mx-5 h-6 w-6 cursor-pointer" />
             </span>
           </Link>
-          <h1 className="text-lg font-bold">Alexander Joshua</h1>
+
+          <h1 className="text-lg font-bold">Name</h1>
         </div>
         <DotsVerticalIcon className="mr-5 mt-5 h-6 w-6 cursor-pointer text-white" />
       </div>
@@ -54,9 +78,11 @@ const ProfileHeader = () => {
       </div>
 
       <div className="p-4 pt-0">
-        <h2 className="md:text-md pt-3 text-lg font-bold">Alexander Joshua</h2>
+        <h2 className="md:text-md pt-3 text-lg font-bold">
+        Alexander Joshua
+        </h2>
         <p>
-          <span className="mr-4">@codelawd</span>
+          <span className="mr-4">@username</span>
           <span className="cursor-pointer hover:text-leviplatte">
             Available <ChevronDownIcon className="inline-flex h-4 w-4" />{' '}
           </span>

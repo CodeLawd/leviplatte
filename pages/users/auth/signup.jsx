@@ -17,7 +17,7 @@ const AuthPage = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const { user, error, loading } = useSelector((state) => ({ ...state.auth }))
-  console.log(user)
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setformData({ ...formData, [name]: value })

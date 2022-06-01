@@ -10,7 +10,7 @@ const Widgets = () => {
           placeholder="Search posts"
           className="flex-1 bg-transparent outline-none"
         />
-        <SearchIcon className="h-6 w-6 text-gray-400" />
+        <SearchIcon className="h-6 w-6 cursor-pointer text-gray-400" />
       </div>
     </div>
   )

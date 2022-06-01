@@ -28,13 +28,10 @@ const Sidebar = () => {
 
   const handleClick = () => {
     dispatch(setLogout())
-    user.state == null &&
-      toast.success(
-        'Successfully Signed Out. \n You will be redirecetd to the login page within 3 secs'
-      )
-    setInterval(() => {
-      router.push('/users/auth/signin')
-    }, 3000)
+    toast.success(
+      'Successfully Signed Out. \n You will be redirecetd to the login page within 3 secs'
+    )
+    router.push('/users/auth/signin')
   }
 
   return (
@@ -53,17 +50,17 @@ const Sidebar = () => {
       <SidebarRow Icon={BellIcon} title="Notification" />
       <SidebarRow Icon={MailIcon} title="Messages" />
       <SidebarRow Icon={BookmarkIcon} title="Bookmark" />
-      <SidebarRow Icon={CollectionIcon} title="Lists" />
+      <Link href="/lists">
+        <span>
+          <SidebarRow Icon={CollectionIcon} title="Lists" />
+        </span>
+      </Link>
       <SidebarRow Icon={UserAddIcon} title="Subscriptions" />
-
       <Link href="/profile">
         <span>
           <SidebarRow Icon={UserIcon} title="Profile" />
         </span>
       </Link>
-      {/* <SideDrawer
-        component={}
-      /> */}
       <SidebarRow Icon={DotsCircleHorizontalIcon} title="More" />
 
       {user?.token ? (
