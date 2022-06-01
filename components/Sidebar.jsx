@@ -49,7 +49,12 @@ const Sidebar = () => {
       </Link>
       <SidebarRow Icon={BellIcon} title="Notification" />
       <SidebarRow Icon={MailIcon} title="Messages" />
-      <SidebarRow Icon={BookmarkIcon} title="Bookmark" />
+      <Link href="/bookmark">
+        <span>
+          <SidebarRow Icon={BookmarkIcon} title="Bookmark" />
+        </span>
+      </Link>
+
       <Link href="/lists">
         <span>
           <SidebarRow Icon={CollectionIcon} title="Lists" />

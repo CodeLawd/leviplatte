@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React, { useEffect } from 'react'
-import { Layout, ListBox } from '../../components/'
+import { Layout, BookmarkMenu } from '../../components/'
 
-const List = () => {
+const Bookmark = () => {
   return (
     <>
       <Head>
@@ -10,10 +10,10 @@ const List = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <ListBox />
+        <BookmarkMenu />
       </Layout>
     </>
   )
 }
 
-export default List
+export default Bookmark
