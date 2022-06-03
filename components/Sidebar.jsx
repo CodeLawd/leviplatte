@@ -26,12 +26,15 @@ const Sidebar = () => {
   const { user } = useSelector((state) => ({ ...state.auth }))
   const router = useRouter()
 
+  const redirect = () => {
+    router.push('/users/auth/signin')
+  }
+
   const handleClick = () => {
     dispatch(setLogout())
-    toast.success(
-      'Successfully Signed Out. \n You will be redirecetd to the login page within 3 secs'
-    )
-    router.push('/users/auth/signin')
+    toast.success('Successfully Signed Out', {
+      onClose: redirect(),
+    })
   }
 
   return (

@@ -18,14 +18,11 @@ const Home = () => {
       : {}
 
   useEffect(() => {
-    dispatch(setUser(user))
+    dispatch(setUser(user || user2))
   }, [])
 
-  // if (!user) {
-  //   toast.error('Please login to continue')
-  //   router.push('/users/auth/signin')
-  //   return
-  // }
+  console.log(user2)
+  console.log(user)
 
   return (
     <>
