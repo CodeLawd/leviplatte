@@ -8,7 +8,6 @@ import {
   SettingsHeader,
   SettingsMainHeader,
   UserAccountSettings,
-  UserAccountSettings,
   UserNotification,
   PrivacySettings,
   UserDisplaySettings,
