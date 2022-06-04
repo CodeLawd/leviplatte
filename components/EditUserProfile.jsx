@@ -81,7 +81,7 @@ const EditUserProfile = () => {
             label="Username"
             type="text"
             placeholder="@username"
-            name={userObj.username}
+            name={username}
             onChange={handleChange}
           />
           <InputBox
