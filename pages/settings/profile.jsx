@@ -24,7 +24,7 @@ const profileSettings = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="col-span-3 hidden border-x md:block">
+        <div className="col-span-3 hidden h-screen border-x md:block">
           <div className="border-b py-3 px-4">
             {' '}
             <Link href="/profile">

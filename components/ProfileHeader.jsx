@@ -14,27 +14,18 @@ import axios from 'axios'
 
 const ProfileHeader = () => {
   const [status, setStatus] = useState(false)
-  const [userObj, setUserObj] = useState(null)
+  const [userObj, setUserObj] = useState({})
   const { user } = useSelector((state) => ({ ...state.auth }))
+
+  // if (!user) return
 
   if (user) {
     useEffect(() => {
-      // try {}catch{}
-      axios
-        .get('https://oracleblocksdapp.xyz/api/user', {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        })
-        .then((data) => {
-          setUserObj(data.data)
-          console.log(data)
-        })
-        .catch((err) => console.log('An error occured'))
+      const userProfile = JSON.parse(localStorage.getItem('userProfile'))
+      setUserObj(userProfile.data)
     }, [])
   }
 
-  console.log(userObj)
   return (
     <div className="border-b border-gray-200">
       <div className="flex h-48 items-start justify-between bg-profile-bg pb-4 text-white">
@@ -45,7 +36,7 @@ const ProfileHeader = () => {
             </span>
           </Link>
 
-          <h1 className="text-lg font-bold">Name</h1>
+          <h1 className="text-lg font-bold">{userObj.name}</h1>
         </div>
         <DotsVerticalIcon className="mr-5 mt-5 h-6 w-6 cursor-pointer text-white" />
       </div>
@@ -53,7 +44,7 @@ const ProfileHeader = () => {
       <div className="relative flex justify-between p-4 pb-0">
         <div>
           <img
-            src="https://avatars.githubusercontent.com/u/52350663?v=4"
+            src={userObj.avatar}
             width={100}
             height={100}
             alt="profile image"
@@ -78,11 +69,9 @@ const ProfileHeader = () => {
       </div>
 
       <div className="p-4 pt-0">
-        <h2 className="md:text-md pt-3 text-lg font-bold">
-        Alexander Joshua
-        </h2>
+        <h2 className="md:text-md pt-3 text-lg font-bold">{userObj.name}</h2>
         <p>
-          <span className="mr-4">@username</span>
+          <span className="mr-4 lowercase">@{userObj.username}</span>
           <span className="cursor-pointer hover:text-leviplatte">
             Available <ChevronDownIcon className="inline-flex h-4 w-4" />{' '}
           </span>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { InputBox, SettingsHeader, SettingsMainHeader } from './index'
 import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
@@ -7,6 +7,7 @@ import { editUserProfile } from '../redux/features/profile.slice'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import useFetch from '../hooks/useFetch'
+import axios from 'axios'
 
 const initialState = {
   username: '',
@@ -18,6 +19,7 @@ const initialState = {
 
 const EditUserProfile = () => {
   const [formDetails, setFormDetails] = useState(initialState)
+  const [userObj, setUserObj] = useState(null)
   const router = useRouter()
   const { userName, displayName, bio, location, url } = formDetails
   const dispatch = useDispatch()
@@ -25,13 +27,21 @@ const EditUserProfile = () => {
     ...state.auth,
   }))
 
-  if (user !== null) {
-    const { loading, error, data } = useFetch(
-      'https://oracleblocksdapp.xyz/api/user',
-      user.token
-    )
-    console.log(data)
+  if (user) {
+    useEffect(() => {
+      axios
+        .get('https://oracleblocksdapp.xyz/api/user', {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((data) => {
+          setUserObj(data.data)
+        })
+        .catch((err) => console.log('An error occured'))
+    }, [])
   }
+
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -41,11 +51,6 @@ const EditUserProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // if (!user?.token) {
-    //   toast.error('You need to be logged in to make changes')
-    //   router.push('/users/auth/signin')
-    //   return
-    // }
     // if (userName || displayName || bio || location || url) {
     //   dispatch(editUserProfile({ formDetails, router, toast }))
     // }
@@ -76,7 +81,7 @@ const EditUserProfile = () => {
             label="Username"
             type="text"
             placeholder="@username"
-            name="username"
+            name={userObj.username}
             onChange={handleChange}
           />
           <InputBox

@@ -19,7 +19,6 @@ const AuthPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log(error)
     error && toast.error(error)
   }, [error])
 
@@ -68,12 +67,13 @@ const AuthPage = () => {
               type="password"
               color="white"
             />
-            <Button
-              text={loading ? 'Loggin in...' : 'Login'}
-              bgColor="leviplatte"
-              textColor="white"
-              style={{ backgroundColor: loading && 'gray' }}
-            />
+            <button
+              className={`${
+                loading && 'loading'
+              } btn btn-block bg-leviplatte font-bold capitalize`}
+            >
+              {loading ? '' : 'SIGN IN'}
+            </button>
           </form>
 
           <div className="py-6 text-center text-leviplatte">

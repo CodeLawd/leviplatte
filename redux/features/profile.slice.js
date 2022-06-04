@@ -17,14 +17,27 @@ export const editUserProfile = createAsyncThunk(
   }
 )
 
+export const getUser = createAsyncThunk(
+  'profile/getUserProfile',
+  async ({ rejectWithValue }) => {
+    try {
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+)
+
 const profileSlice = createSlice({
-  name: 'profile',
+  name: 'userProfile',
   initialState: {
     username: '',
-    displayName: '',
+    display_name: '',
     bio: '',
     location: '',
-    url: '',
+    phone_number: '',
+    website_url: '',
+    avatar: '',
+    amazon_url: '',
     error: '',
     loading: false,
   },

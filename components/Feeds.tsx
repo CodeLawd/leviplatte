@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 const Feeds = () => {
   const { user } = useSelector((state: any) => ({ ...state.auth }))
 
-  console.log(user)
   return (
     <div className="col-span-10 border-x sm:col-span-9 md:col-span-8 lg:col-span-5 h-screen">
       <div className="flex items-center justify-between pb-4">
