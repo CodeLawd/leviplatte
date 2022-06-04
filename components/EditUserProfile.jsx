@@ -21,7 +21,7 @@ const EditUserProfile = () => {
   const [formDetails, setFormDetails] = useState(initialState)
   const [userObj, setUserObj] = useState(null)
   const router = useRouter()
-  const { userName, displayName, bio, location, url } = formDetails
+  const { username, displayName, bio, location, url } = formDetails
   const dispatch = useDispatch()
   const { user } = useSelector((state) => ({
     ...state.auth,
@@ -42,7 +42,6 @@ const EditUserProfile = () => {
     }, [])
   }
 
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormDetails({ ...formDetails, [name]: value })
@@ -50,10 +49,6 @@ const EditUserProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    // if (userName || displayName || bio || location || url) {
-    //   dispatch(editUserProfile({ formDetails, router, toast }))
-    // }
   }
 
   return (
