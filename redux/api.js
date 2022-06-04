@@ -8,7 +8,6 @@ API.interceptors.request.use((req) => {
       JSON.parse(localStorage.getItem('profile')).token
     }`
   }
-
   return req
 })
 
@@ -17,4 +16,4 @@ export const signIn = (formData) => API.post('/user/login', formData)
 export const register = (formData) => API.post('/user/create', formData)
 
 export const editUserProfile = (formData, userId) =>
-  API.patch(`/user/update/${userId}`, formData)
+  API.post(`/user/update/${userId}`, formData)

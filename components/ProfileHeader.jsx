@@ -13,35 +13,19 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 
 const ProfileHeader = () => {
-  const initialState = { name: "", username: "" }
   const [status, setStatus] = useState(false)
-  const [userObj, setUserObj] = useState(initialState)
+  const [userObj, setUserObj] = useState({})
   const { user } = useSelector((state) => ({ ...state.auth }))
 
-  if(!user) return
+  // if (!user) return
 
   if (user) {
     useEffect(() => {
-        const user2 =
-          typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('profile') || '{}')
-            : {}
-
-        setUserObj(user2)
-      axios
-        .get('https://oracleblocksdapp.xyz/api/user', {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        })
-        .then((data) => {
-          setUserObj(data.data)
-        })
-        .catch((err) => console.log('An error occured'))
+      const userProfile = JSON.parse(localStorage.getItem('userProfile'))
+      setUserObj(userProfile.data)
     }, [])
   }
 
-  console.log(userObj)
   return (
     <div className="border-b border-gray-200">
       <div className="flex h-48 items-start justify-between bg-profile-bg pb-4 text-white">

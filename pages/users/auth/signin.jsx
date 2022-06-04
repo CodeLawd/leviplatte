@@ -19,7 +19,6 @@ const AuthPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log(error)
     error && toast.error(error)
   }, [error])
 

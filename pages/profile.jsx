@@ -12,10 +12,8 @@ const profile = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        
         {user && <PersonalProfile />}
         {user && <Widgets />}
-        
       </Layout>
     </>
   )

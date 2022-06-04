@@ -1,28 +1,44 @@
-// import type { NextPage } from 'next'
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { Widgets, Layout, Feeds } from '../components'
 import { setUser } from '../redux/features/auth.slice'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const Home = () => {
-  const dispatch = useDispatch()
   const router = useRouter()
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => ({ ...state.auth }))
 
-  const user2 =
-    typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('profile') || '{}')
-      : {}
-
   useEffect(() => {
-    dispatch(setUser(user || user2))
+    const token =
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('profile') || '{}')
+        : {}
+
+    axios
+      .get('https://oracleblocksdapp.xyz/api/user', {
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
+      })
+      .then((data) => {
+        localStorage.setItem('userProfile', JSON.stringify(data))
+      })
+      .catch((err) => console.log('An error occured'))
+
+    dispatch(setUser(user))
+
+    if (!user) {
+      toast.success('Please sign in to continue')
+      router.push('/users/auth/signin')
+      return
+    }
   }, [])
 
-  console.log(user2)
-  console.log(user)
+
 
   return (
     <>

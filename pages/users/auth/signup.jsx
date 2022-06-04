@@ -24,7 +24,6 @@ const AuthPage = () => {
   }
 
   useEffect(() => {
-    console.log(error)
     error && toast.error(error)
   }, [error])
 

@@ -6,23 +6,16 @@ import { useSelector } from 'react-redux'
 
 const ListBox = () => {
   const [userList, setUserLists] = useState([])
-  const [listName, setListName] = useState("")
+  const [listName, setListName] = useState('')
   const [userObj, setUserObj] = useState({})
   const [loading, setLoading] = useState(false)
   const { user } = useSelector((state) => ({ ...state.auth }))
 
   if (user) {
     useEffect(() => {
-      axios
-      .get('https://oracleblocksdapp.xyz/api/user', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
-      .then((data) => {
-        setUserObj(data.data)
-      })
-      .catch((err) => console.log('An error occured'))
+      const userProfile = localStorage.getItem('userProfile')
+      setUserObj(userProfile.data)
+      setLoading(true)
 
       axios
         .get('https://oracleblocksdapp.xyz/api/lists', {
@@ -32,29 +25,31 @@ const ListBox = () => {
         })
         .then((data) => {
           setUserLists(data.data)
-          console.log(data)
+          setLoading(false)
         })
         .catch((err) => console.log('An error occured'))
     }, [])
   }
 
-  console.log(userObj)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    
+
     axios
-        .post('https://oracleblocksdapp.xyz/api/list/new', { id: userObj.userId, name: listName}, {
+      .post(
+        'https://oracleblocksdapp.xyz/api/list/new',
+        { id: userObj.userId, name: listName },
+        {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
-        })
-        .then((data) => {
-          setUserLists(data.data)
-          setLoading(false)
-        })
-        .catch((err) => console.log('An error occured'))
+        }
+      )
+      .then((data) => {
+        setUserLists(data.data)
+        setLoading(false)
+      })
+      .catch((err) => console.log('An error occured'))
   }
 
   return (
@@ -69,28 +64,50 @@ const ListBox = () => {
         <input type="checkbox" id="my-modal-4" className="modal-toggle" />
         <label htmlFor="my-modal-4" className="modal cursor-pointer">
           <label className="modal-box relative" htmlFor="">
-          <label htmlFor="my-modal-4" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 className="text-lg font-bold">
-                Create New List
-            </h3>
+            <label
+              htmlFor="my-modal-4"
+              className="btn btn-circle btn-sm absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            <h3 className="text-lg font-bold">Create New List</h3>
             <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter list name" className="input input-bordered w-full" onChange={(e) => setListName(e.target.value)} />
-            <div className="mt-3 modal-action"> 
-            <button className={` ${loading && "loading"} btn btn-primary`} type="submit"> {loading ? '' : 'Save'}</button>
-            </div>
+              <input
+                type="text"
+                placeholder="Enter list name"
+                className="input input-bordered w-full"
+                onChange={(e) => setListName(e.target.value)}
+              />
+              <div className="modal-action mt-3">
+                <button
+                  className={` ${loading && 'loading'} btn btn-primary`}
+                  type="submit"
+                >
+                  {' '}
+                  {loading ? '' : 'Save'}
+                </button>
+              </div>
             </form>
           </label>
         </label>
       </div>
 
+      {loading && (
+        <div>
+          {' '}
+          <h1 className="p-5 text-xl"> Loading... </h1>{' '}
+        </div>
+      )}
+
       <div>
-        {userList !== [] && userList?.map((userList, idx) => (
-          <SettingsHeader
-            text={userList.name}
-            small={`${userList.slug} | List Count ${userList.listCount}`}
-            key={idx}
-          />
-        ))}
+        {userList !== [] &&
+          userList?.map((userList, idx) => (
+            <SettingsHeader
+              text={userList.name}
+              small={`${userList.slug} | List Count ${userList.listCount}`}
+              key={idx}
+            />
+          ))}
       </div>
     </div>
   )

@@ -42,7 +42,6 @@ const EditUserProfile = () => {
     }, [])
   }
 
-  console.log(userObj)
 
   const handleChange = (e) => {
     const { name, value } = e.target

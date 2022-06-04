@@ -16,5 +16,5 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/ProfileHeader.jsx", "components/Toggler.jsx", "pages/users/auth/signin.jsx", "pages/users/auth/signup.jsx", "components/Feeds.tsx", "pages/index.jsx", "pages/settings/profile.jsx", "components/Sidebar.jsx", "components/EditUserProfile.jsx", "pages/profile.jsx", "components/TweetBox.jsx", "components/SettingsHeader.jsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next"]
 }
