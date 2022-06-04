@@ -4,12 +4,15 @@ import { ArrowLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import EditUserProfile from '../../components/EditUserProfile'
 import Head from 'next/head'
-import SettingsHeader from '../../components/SettingsHeader'
-import SettingsMainHeader from '../../components/SettingsMainHeader'
-import UserAccountSettings from '../../components/UserAccountSettings'
-import UserNotification from '../../components/UserNotification'
-import PrivacySettings from '../../components/PrivacySettings'
-import UserDisplaySettings from '../../components/UserDisplaySettings'
+import {
+  SettingsHeader,
+  SettingsMainHeader,
+  UserAccountSettings,
+  UserAccountSettings,
+  UserNotification,
+  PrivacySettings,
+  UserDisplaySettings,
+} from '../../components/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateSettings } from '../../redux/features/settings.slice'
 
