@@ -3,6 +3,7 @@ import axios from 'axios'
 import { PlusIcon } from '@heroicons/react/outline'
 import { SettingsHeader } from '../index'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const ListBox = () => {
   const [userList, setUserLists] = useState([])
@@ -13,7 +14,10 @@ const ListBox = () => {
 
   if (user) {
     useEffect(() => {
-      const userProfile = localStorage.getItem('userProfile')
+      let cancel = false
+
+      if (cancel) return
+      const userProfile = JSON.parse(localStorage.getItem('userProfile'))
       setUserObj(userProfile.data)
       setLoading(true)
 
@@ -24,15 +28,20 @@ const ListBox = () => {
           },
         })
         .then((data) => {
+          if (cancel) return
+
           setUserLists(data.data)
           setLoading(false)
         })
         .catch((err) => console.log('An error occured'))
+
+      return () => (cancel = true)
     }, [])
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     setLoading(true)
 
     axios
@@ -46,7 +55,9 @@ const ListBox = () => {
         }
       )
       .then((data) => {
-        setUserLists(data.data)
+        setUserLists([...userList, data.data])
+        setListName('')
+        toast.success('List updated successfully')
         setLoading(false)
       })
       .catch((err) => console.log('An error occured'))
